@@ -1,0 +1,42 @@
+
+<div class="list card" ng-repeat="i in data">
+
+  <div class="item item-avatar">
+    <img src="img/portafolio.png">
+    <h2>{{i.tituloDesc}}</h2>
+    <p>{{i.hora}}</p>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" ng-src="{{i.imagen}}">
+    <p>
+      {{i.descripcion}}
+    </p>
+    
+    <!--
+    <p>
+      <a href="#" class="subdued">1 Like</a>
+      <a href="#" class="subdued">5 Comments</a>
+    </p>
+    -->
+  </div>
+
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" ng-click="click(i)" href="#">
+      <i class="icon ion-link"></i>
+      ver mas
+    </a>
+    
+    <!--
+    <a class="tab-item" href="#">
+      <i class="icon ion-chatbox"></i>
+      Comment
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-share"></i>
+      Share
+    </a>
+    -->
+  </div>
+
+</div>
