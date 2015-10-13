@@ -1,0 +1,25 @@
+<ion-view title="Sign Up">
+    <ion-content padding="true" class="has-header">
+        <form>
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label">Usuario</span>
+                    <input type="text" placeholder="Nombre de usuario" ng-model="data.username">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Email</span>
+                    <input type="email" placeholder="correo@corpbanca.com" ng-model="data.email">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Contraseña</span>
+                    <input type="password" placeholder="Minimo 6 caracteres" ng-model="data.password">
+                </label>
+            </ion-list>
+            <button class="button button-positive button-block" ng-click="signupEmail()">Listo</button>
+        </form>
+
+        <a href = "#/login" class="button button-light" style="width: 100%; margin: 20px 0;">
+         Login
+       </a>
+    </ion-content>
+</ion-view>

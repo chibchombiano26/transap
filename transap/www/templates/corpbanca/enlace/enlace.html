@@ -1,6 +1,6 @@
 <ion-view view-title="Seguimiento">
   <ion-content>
-   
+
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Nit cliente</span>
@@ -18,15 +18,39 @@
         <span class="input-label">Gestion</span>
         <input type="text" placeholder="Gestion">
       </label>
-      
+
       <div class="button-bar">
         <a class="button" ng-click="recordAudio()">Adjuntar audio</a>
         <a class="button" ng-click="takePicture()">Imagen</a>
-        <a class="button">Solicitar</a>
       </div>
-      
+
+      <div ng-show="showAudio">
+        </br>
+        <div class="row">
+          <div class="col col-33 col-offset-33"><p>{{estadoAudio}}</p></div>
+        </div>
+
+        <div class="button-bar">
+            <a class="button" ng-click="reproducir()">Reproducir</a>
+            <a class="button" ng-click="stopRecord()">Detener grabacion</a>
+        </div>
+      </div>
+
+      <div ng-show="showImage">
+        </br>
+        <div class="row">
+          <div class="col col-33 col-offset-33">
+            <img ng-src="{{imagen}}">
+          </div>
+        </div>
+      </div>
+
+      <button ng-click="solicitar()" class="button button-full button-positive">
+        Solicitar
+      </button>
+
     </div>
-    
-   
+
+
   </ion-content>
 </ion-view>

@@ -7,7 +7,7 @@
 angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'transap', 'ngCordova'])
 
 .run(function($ionicPlatform) {
-  
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,9 +20,9 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    
-    Ionic.io(); 
-    
+
+    Ionic.io();
+
     var push = new Ionic.Push({
       "debug": true
     });
@@ -30,11 +30,14 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     push.register(function(token) {
       console.log("Device token:",token.token);
     });
-    
+
   });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+
+  Parse.initialize("VFrfioL7Z9v88reBFLifFKeqCATeaWPzInCgWppC", "SITmuIcbnQxbZxXBvbXJkJlld7IwmOLRhbTouozO");
+
   $stateProvider
 
   .state('app', {
@@ -43,7 +46,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     templateUrl: 'templates/menus/menu.html',
     controller: 'AppCtrl'
   })
-  
+
   .state('app.home', {
     url: '/home',
     views: {
@@ -53,16 +56,38 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
       }
     }
   })
-  
-  
+
+  .state('app.success', {
+    url: '/success',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/corpbanca/success/view.html',
+        controller: 'successCtrl'
+      }
+    }
+  })
+
+  $stateProvider
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/corpbanca/login/signIn.html',
+    controller: 'LoginCtrl'
+  })
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/corpbanca/login/signUp.html',
+    controller: 'LoginCtrl'
+  })
+
+
   /******************************************* Enlace ************************/
   .state('enlace', {
     url: '/enlace',
     abstract: true,
     templateUrl: 'templates/menus/menuEnlaceT.html'
   })
-  
-  
+
+
   .state('enlace.seguimiento', {
     url: '/seguimiento',
     views: {
@@ -73,16 +98,16 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     }
   })
   /*************************************************************************/
-  
-  
+
+
   /******************************************* Azul ************************/
   .state('azul', {
     url: '/azul',
     abstract: true,
     templateUrl: 'templates/menus/menuAzul.html'
   })
-  
-  
+
+
   .state('azul.argumentos', {
     url: '/argumentos',
     views: {
@@ -91,7 +116,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
       }
     }
   })
-    
+
     .state('azul.definicion', {
       url: '/definicion',
       views: {
@@ -100,7 +125,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('azul.funcionamiento', {
       url: '/funcionamiento',
       views: {
@@ -109,7 +134,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('azul.modalidades', {
       url: '/modalidades',
       views: {
@@ -118,7 +143,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('azul.tarifas', {
       url: '/tarifas',
       views: {
@@ -127,17 +152,17 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-  
+
   /*************************************************************************/
-  
+
   /******************************************* Concentradora ************************/
   .state('cuentas_concentradora', {
     url: '/cuentas_concentradora',
     abstract: true,
     templateUrl: 'templates/menus/menuCuentas.html'
   })
-  
-  
+
+
   .state('cuentas_concentradora.argumentos', {
     url: '/argumentos',
     views: {
@@ -146,7 +171,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
       }
     }
   })
-    
+
     .state('cuentas_concentradora.definicion', {
       url: '/definicion',
       views: {
@@ -155,7 +180,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('cuentas_concentradora.funcionamiento', {
       url: '/funcionamiento',
       views: {
@@ -164,7 +189,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('cuentas_concentradora.modalidades', {
       url: '/modalidades',
       views: {
@@ -173,7 +198,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('cuentas_concentradora.tarifas', {
       url: '/tarifas',
       views: {
@@ -182,17 +207,17 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-  
+
   /*************************************************************************/
-  
+
   /******************************************* Indicadores ************************/
   .state('indicadores', {
     url: '/indicadores',
     abstract: true,
     templateUrl: 'templates/menus/menuIndicadores.html'
   })
-  
-  
+
+
   .state('indicadores.indicadores', {
     url: '/indicadores',
     views: {
@@ -202,16 +227,16 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     }
   })
   /*************************************************************************/
-  
-  
+
+
   /******************************************* Pagos ************************/
   .state('pagos', {
     url: '/pagos',
     abstract: true,
     templateUrl: 'templates/menus/menuPagos.html'
   })
-  
-  
+
+
   .state('pagos.chequesargumentos', {
     url: '/chequesargumentos',
     views: {
@@ -220,7 +245,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
       }
     }
   })
-    
+
     .state('pagos.chequesdefinicion', {
       url: '/chequesdefinicion',
       views: {
@@ -229,7 +254,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('pagos.chequesfuncionamiento', {
       url: '/chequesfuncionamiento',
       views: {
@@ -238,7 +263,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('pagos.chequesmodalidades', {
       url: '/chequesmodalidades',
       views: {
@@ -247,7 +272,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('pagos.chequestarifas', {
       url: '/chequestarifas',
       views: {
@@ -256,10 +281,10 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
-    
+
+
     /*Confirming*/
-    
+
     .state('pagos.confirmingargumentos', {
     url: '/confirmingargumentos',
     views: {
@@ -268,7 +293,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
       }
     }
   })
-    
+
     .state('pagos.confirmingdefinicion', {
       url: '/confirmingdefinicion',
       views: {
@@ -277,7 +302,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('pagos.confirmingfuncionamiento', {
       url: '/confirmingfuncionamiento',
       views: {
@@ -286,7 +311,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('pagos.confirmingmodalidades', {
       url: '/confirmingmodalidades',
       views: {
@@ -295,7 +320,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('pagos.confirmingtarifas', {
       url: '/confirmingtarifas',
       views: {
@@ -304,10 +329,10 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
-    
+
+
     /*Electronicos*/
-    
+
     .state('pagos.electronicosargumentos', {
     url: '/electronicosargumentos',
     views: {
@@ -316,7 +341,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
       }
     }
   })
-    
+
     .state('pagos.electronicosdefinicion', {
       url: '/electronicosdefinicion',
       views: {
@@ -325,7 +350,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('pagos.electronicosfuncionamiento', {
       url: '/electronicosfuncionamiento',
       views: {
@@ -334,7 +359,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('pagos.electronicosmodalidades', {
       url: '/electronicosmodalidades',
       views: {
@@ -343,7 +368,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('pagos.electronicostarifas', {
       url: '/electronicostarifas',
       views: {
@@ -352,17 +377,17 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-  
+
   /*************************************************************************/
-    
+
   /******************************************* Azul ************************/
   .state('recaudos', {
     url: '/recaudos',
     abstract: true,
     templateUrl: 'templates/menus/menuRecaudos.html'
   })
-  
-  
+
+
   .state('recaudos.referenciadoargumentos', {
     url: '/referenciadoargumentos',
     views: {
@@ -371,7 +396,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
       }
     }
   })
-    
+
     .state('recaudos.referenciadofuncionamiento', {
       url: '/referenciadofuncionamiento',
       views: {
@@ -380,7 +405,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('recaudos.referenciadomodalidades', {
       url: '/referenciadomodalidades',
       views: {
@@ -389,7 +414,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('recaudos.referenciado', {
       url: '/referenciado',
       views: {
@@ -398,7 +423,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('recaudos.referenciadotarifas', {
       url: '/referenciadotarifas',
       views: {
@@ -407,9 +432,9 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     /* Transporte */
-    
+
     .state('recaudos.transporteargumentos', {
     url: '/transporteargumentos',
     views: {
@@ -418,7 +443,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
       }
     }
   })
-    
+
     .state('recaudos.transportefuncionamiento', {
       url: '/transportefuncionamiento',
       views: {
@@ -427,7 +452,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('recaudos.transportemodalidades', {
       url: '/transportemodalidades',
       views: {
@@ -436,7 +461,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('recaudos.transporte', {
       url: '/transporte',
       views: {
@@ -445,7 +470,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-    
+
     .state('recaudos.transportetarifas', {
       url: '/transportetarifas',
       views: {
@@ -454,11 +479,11 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
         }
       }
     })
-  
+
   /*************************************************************************/
-    
-    
-    
+
+
+
   .state('app.push',{
     url : '/push',
     views :{
@@ -469,5 +494,5 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/login');
 });
