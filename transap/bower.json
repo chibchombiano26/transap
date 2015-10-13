@@ -6,6 +6,7 @@
     "ionic-platform-web-client": "~0.1.0"
   },
   "dependencies": {
-    "angular-chart.js": "~0.8.4"
+    "angular-chart.js": "~0.8.4",
+    "quick-ngrepeat": "*"
   }
 }
