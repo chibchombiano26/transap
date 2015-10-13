@@ -53,20 +53,14 @@ angular.module("starter")
   function ionicUser(){
     Ionic.io();
 
-    /*
-    var push = new Ionic.Push({
-      "onNotification" : function(notification){
-        debugger
-        var payload = notification.payload;
-        console.log(notification, payload);
-      }
-    });
-    */
+    config = { "ios": { "badge": true, "sound": true }, "android": { "iconColor": "#343434" } };
 
     var push = new Ionic.Push({
-      onNotification : function(notification){
+      "debug": true,
+      "onNotification" : function(notification){
          alert(notification);
-      }
+      },
+      "pluginConfig": config,
     });
     var user = Ionic.User.current();
 

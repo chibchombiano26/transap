@@ -29,6 +29,7 @@ angular.module("starter")
     }
 
     $scope.reproducir = function(){
+      mediaRec.setVolume(0.5);
       mediaRec.play();
     }
 

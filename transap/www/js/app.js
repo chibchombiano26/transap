@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'transap', 'ngCordova'])
+angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'transap', 'ngCordova', 'chart.js'])
 
 .run(function($ionicPlatform) {
 
@@ -73,12 +73,22 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     templateUrl: 'templates/corpbanca/login/signIn.html',
     controller: 'LoginCtrl'
   })
+
   .state('signup', {
     url: '/signup',
     templateUrl: 'templates/corpbanca/login/signUp.html',
     controller: 'LoginCtrl'
   })
 
+  .state('app.chart', {
+    url: '/chart',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/corpbanca/chart/view.html',
+        controller: 'GraphCtrl'
+      }
+    }
+  })
 
   /******************************************* Enlace ************************/
   .state('enlace', {
