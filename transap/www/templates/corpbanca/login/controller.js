@@ -56,7 +56,7 @@ angular.module("starter")
     config = { "ios": { "badge": true, "sound": true }, "android": { "iconColor": "#343434" } };
 
     var push = new Ionic.Push({
-      "debug": true,
+      /*"debug": true,*/
       "onNotification" : function(notification){
          alert(notification);
       },
@@ -74,6 +74,7 @@ angular.module("starter")
        console.log('Registered token:', data.token);
        console.log(data.token);
        push.addTokenToUser(user);
+       user.set('area', 'corpbanca');
        user.save();
     }
     push.register(callback);
